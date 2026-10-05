@@ -188,8 +188,8 @@ def change_banner(session, host, uri):
     payload = f'profile_bg_type=1&image_uri={uri}'
 
     m = SignerPy.sign(
-        params=params1,
-        payload=payload1,
+        params=params,
+        payload=payload,
         aid=473824,
         version=8404,
     )
