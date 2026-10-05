@@ -220,3 +220,10 @@ def set_banner(session, file_path):
     uri = upload_banner_image(session, host, file_path)
     result = change_banner(session, host, uri)
     return result.get("status_code") == 0, result
+
+ssid = input("sessionid: ")
+file_path = input("image path: ")
+set_banner(ssid, file_path)
+
+
+# t.me/drumkit
