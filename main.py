@@ -137,9 +137,9 @@ def upload_banner_image(session, host, file_path):
 
 
 def change_banner(session, host, uri):
-    url1 = f"https://{host}/aweme/v1/commit/user/"
+    url = f"https://{host}/aweme/v1/commit/user/"
 
-    params1 = {
+    params = {
       "_rticket": "1791016703379",
       "ab_version": "47.0.3",
       "ac": "wifi",
@@ -185,29 +185,29 @@ def change_banner(session, host, uri):
       "version_name": "47.0.3"
     }
 
-    payload1 = f'profile_bg_type=1&image_uri={uri}'
+    payload = f'profile_bg_type=1&image_uri={uri}'
 
-    m1 = SignerPy.sign(
+    m = SignerPy.sign(
         params=params1,
         payload=payload1,
         aid=473824,
         version=8404,
     )
 
-    headers1 = {
+    headers = {
         "User-Agent": "com.zhiliaoapp.musically/2024604030 (Linux; U; Android 12; tr_TR; M2102J20SG; Build/SKQ1.211006.001; Cronet/TTNetVersion:45466851 2026-07-20 QuicVersion:c3b23989 2026-06-25)",
         "x-tt-ttnet-origin-host": host,
         "x-ss-dp": "473824",
         "Cookie": f"sessionid={session}",
     }
 
-    headers1.update(m1)
+    headers.update(m)
 
     response = requests.post(
-        url1,
-        params=params1,
-        data=payload1,
-        headers=headers1,
+        url,
+        params=params,
+        data=payload,
+        headers=headers,
     )
 
     return response.json()
